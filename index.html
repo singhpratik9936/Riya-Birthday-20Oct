@@ -1,390 +1,300 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Riya ❤️</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Sacramento&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    body {
-      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #feada6 100%);
-      min-height: 100vh;
-      color: #4a4a4a;
-      overflow-x: hidden;
-    }
-
-    /* Login Screen */
-    #login-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      padding: 20px;
-    }
-
-    .login-card {
-      background: rgba(255, 255, 255, 0.95);
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-      text-align: center;
-      max-width: 380px;
-      width: 100%;
-    }
-
-    .login-card h2 {
-      font-family: 'Sacramento', cursive;
-      font-size: 2.5rem;
-      color: #e63946;
-      margin-bottom: 10px;
-    }
-
-    .login-card input {
-      width: 100%;
-      padding: 12px 15px;
-      margin: 10px 0;
-      border: 2px solid #ffb6c1;
-      border-radius: 25px;
-      outline: none;
-      text-align: center;
-      font-size: 1rem;
-    }
-
-    .login-card button {
-      width: 100%;
-      padding: 12px;
-      background: #e63946;
-      border: none;
-      color: white;
-      font-size: 1rem;
-      font-weight: 600;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: 0.3s;
-      margin-top: 10px;
-    }
-
-    .login-card button:hover {
-      background: #d62828;
-    }
-
-    #error-msg {
-      color: #d62828;
-      font-size: 0.85rem;
-      margin-top: 8px;
-      display: none;
-    }
-
-    /* Main Website Content */
-    #main-content {
-      display: none;
-      padding: 20px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    header {
-      text-align: center;
-      margin-top: 20px;
-      margin-bottom: 30px;
-    }
-
-    header h1 {
-      font-family: 'Sacramento', cursive;
-      font-size: 3.5rem;
-      color: #d62828;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    }
-
-    header p {
-      font-size: 1.1rem;
-      color: #666;
-    }
-
-    /* Countdown Timer */
-    .countdown-container {
-      background: rgba(255, 255, 255, 0.85);
-      padding: 20px;
-      border-radius: 15px;
-      text-align: center;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      margin-bottom: 30px;
-    }
-
-    .countdown-container h3 {
-      color: #e63946;
-      margin-bottom: 15px;
-    }
-
-    .timer {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .box {
-      background: #e63946;
-      color: white;
-      padding: 10px;
-      border-radius: 10px;
-      min-width: 65px;
-    }
-
-    .box span {
-      font-size: 1.5rem;
-      font-weight: bold;
-      display: block;
-    }
-
-    .box label {
-      font-size: 0.75rem;
-    }
-
-    /* Gallery Section */
-    .section-title {
-      text-align: center;
-      font-family: 'Sacramento', cursive;
-      font-size: 2.8rem;
-      color: #d62828;
-      margin: 30px 0 15px;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
-      margin-bottom: 30px;
-    }
-
-    .gallery-card {
-      background: white;
-      padding: 10px;
-      border-radius: 15px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      text-align: center;
-      transition: transform 0.3s;
-    }
-
-    .gallery-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .gallery-card img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-
-    .gallery-card p {
-      margin-top: 8px;
-      font-weight: 500;
-      color: #555;
-      font-size: 0.9rem;
-    }
-
-    /* Love Letter */
-    .letter-card {
-      background: #fff8f8;
-      border-left: 5px solid #e63946;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      line-height: 1.8;
-      font-size: 1rem;
-      color: #444;
-      margin-bottom: 30px;
-    }
-
-    /* Surprise Box */
-    .surprise-section {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .gift-btn {
-      background: #e63946;
-      color: white;
-      padding: 15px 30px;
-      font-size: 1.2rem;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      box-shadow: 0 10px 20px rgba(230, 57, 70, 0.4);
-      transition: 0.3s;
-    }
-
-    .gift-btn:hover {
-      transform: scale(1.05);
-      background: #d62828;
-    }
-
-    #surprise-content {
-      display: none;
-      margin-top: 20px;
-      padding: 20px;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #777;
-      font-size: 0.9rem;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#210916">
+<title>For My Riya ♡</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#210916;--bg2:#3c1029;--rose:#ff8fbd;--pink:#ffd0e3;--cream:#fff5f8;--muted:#e9c5d5;--line:#ffb4d52b;--glass:#ffffff0b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:25px}
+body{margin:0;color:var(--cream);font-family:"DM Sans",sans-serif;background:var(--bg);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 15% 8%,#70264b 0,transparent 40%),radial-gradient(ellipse at 90% 55%,#531637 0,transparent 42%),linear-gradient(145deg,#170710,#2a0b1d 60%,#190713)}
+button,input{font:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+button{cursor:pointer}
+a{color:inherit}
+.wrap{width:min(100% - 30px,900px);margin-inline:auto}
+.center{text-align:center}
+.serif{font-family:"Playfair Display",Georgia,serif}
+.script{font-family:"Playfair Display",Georgia,serif;font-style:italic;color:var(--pink)}
+.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.24em;color:#ffc1d9}
+h1,h2,h3{font-family:"Playfair Display",Georgia,serif;font-weight:400}
+h1{font-size:clamp(3rem,10vw,6rem);line-height:1.03;margin:18px 0}
+h2{font-size:clamp(2rem,7vw,3.3rem);margin:10px 0 15px}
+p{line-height:1.85;color:var(--muted)}
+.btn{border:1px solid #ffc0da;background:linear-gradient(135deg,#ffd1e4,#ff85b8);color:#3a0b25;padding:14px 23px;border-radius:999px;font-weight:600;font-size:13px;box-shadow:0 10px 35px #ff5d9e25;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 40px #ff5d9e45}
+.btn:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.ghost{background:transparent;color:var(--pink);box-shadow:none}
+.card{border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(12px);border-radius:26px;padding:clamp(22px,5vw,42px);margin:22px 0;box-shadow:0 18px 60px #0002}
+#login-screen{min-height:100svh;display:grid;place-items:center;padding:22px 0;position:relative;z-index:2}
+.login-card{width:min(100%,450px);text-align:center}
+.brand-heart{font-size:46px;color:var(--rose);display:inline-block;animation:heartbeat 1.8s ease-in-out infinite}
+@keyframes heartbeat{50%{transform:scale(1.12)}}
+.login-card h1{font-size:clamp(3.4rem,12vw,5rem);margin:12px 0}
+.login-card .sub{max-width:330px;margin:0 auto 24px}
+.login-card input{display:block;width:100%;padding:15px 17px;margin:11px 0;border:1px solid #ffb4d54a;border-radius:15px;background:#160711;color:white;text-align:center;outline:none}
+.login-card input::placeholder{color:#caa0b4}
+.login-card input:focus{border-color:var(--rose);box-shadow:0 0 0 3px #ff8fbd18}
+#error-msg{min-height:20px;color:#ffc0d9;font-size:12px;margin:10px 0 0;display:none}
+.tiny{font-size:10px;color:#cfa5b8;line-height:1.7}
+#main-content{display:none;padding-bottom:35px}
+nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:22px 0}
+.navbrand{font-family:"Playfair Display",serif;font-style:italic;color:var(--pink);font-size:21px;white-space:nowrap}
+.navlinks{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end}
+.navlinks a{text-decoration:none;font-size:10px;letter-spacing:.08em;color:#f8d7e5}
+.navlinks a:hover{color:#fff}
+.hero{min-height:72svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:45px 0 55px}
+.hero .eyebrow{margin-bottom:12px}
+.hero p{max-width:600px;margin:0 auto 25px}
+.hero .tag{display:inline-block;border:1px solid #ffb4d54a;border-radius:99px;padding:10px 14px;font-size:10px;letter-spacing:.12em;color:#ffc0da}
+.ornament{color:#ff8fbd;font-size:24px;margin:20px 0}
+.divider{height:1px;width:65%;margin:25px auto;background:linear-gradient(90deg,transparent,#ff9fc8a0,transparent)}
+.countdown{padding:clamp(22px,5vw,40px)}
+.timer{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;max-width:570px;margin:26px auto}
+.timebox{padding:17px 5px;border:1px solid #ffb4d54a;border-radius:17px;background:#ffffff08}
+.timebox strong{display:block;font-family:"Playfair Display",serif;font-size:clamp(1.7rem,6vw,2.8rem);font-weight:400;color:#fff}
+.timebox span{font-size:9px;text-transform:uppercase;letter-spacing:.13em;color:#ffc0da}
+.section-heading{text-align:center;margin:45px 0 22px}
+.section-heading p{max-width:520px;margin:0 auto}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.gallery-card{margin:0;overflow:hidden;border-radius:20px;background:#ffffff08;border:1px solid var(--line);transition:transform .25s,box-shadow .25s}
+.gallery-card:hover{transform:translateY(-3px);box-shadow:0 14px 35px #0002}
+.gallery-card img{width:100%;height:clamp(175px,35vw,300px);object-fit:cover;display:block;cursor:zoom-in}
+.gallery-card figcaption{text-align:center;padding:13px 8px 15px;color:#ffd0e3;font-family:"Playfair Display",serif;font-style:italic;font-size:14px}
+.letter-card{background:linear-gradient(145deg,#fff4f7,#f9dce8);color:#4a1830;border-radius:23px;padding:clamp(22px,5vw,42px);box-shadow:0 18px 50px #0002}
+.letter-card p{color:#5c2a41;line-height:2}
+.letter-card .signoff{color:#b12b65;font-family:"Playfair Display",serif;font-style:italic;font-size:22px}
+.reason-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.reason{padding:18px 12px;border-top:1px solid #ff9fc88a;background:#ffffff06;border-radius:15px}
+.reason b{display:block;color:#ffb9d5;font-size:22px;margin-bottom:10px}
+.reason p{font-size:13px;line-height:1.7;margin:0}
+.surprise-box{display:none;margin-top:22px;padding:24px 18px;border:1px solid #ffb4d566;background:#ff8fbd12;border-radius:20px;animation:rise .65s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.surprise-box h3{font-size:28px;color:#ffd0e3}
+.surprise-box p{font-size:17px}
+footer{text-align:center;padding:38px 0 20px;color:#d5a6bc;font-family:"Playfair Display",serif;font-style:italic}
+#hearts{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:5}
+.float-heart{position:absolute;bottom:-40px;animation:floatUp linear forwards;color:#ff9fc8;opacity:0}
+@keyframes floatUp{0%{transform:translateY(0) rotate(0);opacity:0}12%{opacity:.65}90%{opacity:.3}100%{transform:translateY(-110vh) rotate(35deg);opacity:0}}
+#lightbox{display:none;position:fixed;inset:0;background:#090309ed;z-index:20;align-items:center;justify-content:center;padding:20px}
+#lightbox img{max-width:100%;max-height:85svh;object-fit:contain;border-radius:12px}
+#close-lightbox{position:absolute;top:15px;right:18px;background:#ffffff18;border:1px solid #ffffff55;color:white;border-radius:50%;width:42px;height:42px;font-size:23px}
+@media(max-width:560px){
+ .wrap{width:min(100% - 22px,900px)}nav{align-items:flex-start}.navbrand{font-size:18px}.navlinks{gap:8px;max-width:190px}.navlinks a{font-size:9px}
+ .hero{min-height:68svh;padding:35px 0}.card{border-radius:21px}.gallery{gap:9px}.gallery-card{border-radius:15px}.gallery-card img{height:190px}.gallery-card figcaption{font-size:12px;padding:11px 5px}
+ .timer{gap:6px}.timebox{border-radius:13px;padding:13px 2px}.timebox span{font-size:8px}.reason-grid{grid-template-columns:1fr}.reason{display:flex;align-items:center;gap:13px;text-align:left}.reason b{margin:0;min-width:45px}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
 </head>
 <body>
+<div id="hearts" aria-hidden="true"></div>
 
-  <!-- Password Login Screen -->
-  <div id="login-screen">
-    <div class="login-card">
-      <h2>Secret Entrance ❤️</h2>
-      <p style="font-size: 0.9rem; color: #666; margin-bottom: 15px;">Sirf Riya ke liye ek chhota sa surprise!</p>
-      <input type="text" id="username" placeholder="Enter ID (e.g. riya)">
-      <input type="password" id="password" placeholder="Enter Password (e.g. 20october)">
-      <button onclick="checkLogin()">Unlock Heart 💖</button>
-      <p id="error-msg">Incorrect ID or Password! Try again ❤️</p>
+<section id="login-screen">
+  <div class="wrap">
+    <div class="card login-card">
+      <div class="brand-heart">♡</div>
+      <div class="eyebrow">A secret made with love</div>
+      <h1 class="serif">For my <span class="script">Riya</span></h1>
+      <p class="sub">Ek chhoti si duniya, sirf tumhare liye. Enter our secret and open your birthday surprise. 💌</p>
+      <form id="login-form">
+        <input id="username" autocomplete="username" placeholder="Your secret ID" aria-label="Secret ID" required>
+        <input id="password" type="password" autocomplete="current-password" placeholder="Our secret password" aria-label="Secret password" required>
+        <button class="btn" type="submit" style="width:100%">Unlock my heart ♡</button>
+        <p id="error-msg" role="alert">Secret match nahi hua, meri jaan. Ek baar phir try karo ♡</p>
+      </form>
+      <p class="tiny">One little surprise. A thousand feelings. ♡</p>
     </div>
   </div>
+</section>
 
-  <!-- Main Website Content -->
-  <div id="main-content">
-    <header>
-      <h1>Happy Birthday Riya! 🎉❤️</h1>
-      <p>Welcome to your personal secret romantic space!</p>
-    </header>
+<div id="main-content">
+ <div class="wrap">
+  <nav>
+    <div class="navbrand">Pratik <span class="script">♡</span> Riya</div>
+    <div class="navlinks"><a href="#letter">LOVE LETTER</a><a href="#memories">MEMORIES</a><a href="#countdown">COUNTDOWN</a></div>
+  </nav>
 
-    <!-- Countdown Timer -->
-    <div class="countdown-container">
-      <h3>⏰ Countdown to 20 October 🎂</h3>
-      <div class="timer">
-        <div class="box"><span id="days">00</span><label>Days</label></div>
-        <div class="box"><span id="hours">00</span><label>Hours</label></div>
-        <div class="box"><span id="minutes">00</span><label>Minutes</label></div>
-        <div class="box"><span id="seconds">00</span><label>Seconds</label></div>
-      </div>
+  <header class="hero">
+    <div class="eyebrow">20 October · Your special day</div>
+    <h1>Happy Birthday,<br><span class="script">meri Riya.</span></h1>
+    <p>Distance may keep us in different places, but it can never make you less close to my heart. A little website, filled with a lot of love — made only for you. ❤️</p>
+    <div class="tag">MADE WITH LOVE · JUST FOR YOU</div>
+    <div class="divider"></div>
+    <a class="btn" href="#letter" style="text-decoration:none;display:inline-block">A letter from my heart 💌</a>
+    <div class="ornament">♡ &nbsp; ✧ &nbsp; ♡</div>
+  </header>
+
+  <section class="card countdown center" id="countdown">
+    <div class="eyebrow">Every second is a little closer</div>
+    <h2>Until <span class="script">your birthday</span></h2>
+    <p id="countdown-note">Counting the moments until we celebrate you.</p>
+    <div class="timer">
+      <div class="timebox"><strong id="days">00</strong><span>Days</span></div>
+      <div class="timebox"><strong id="hours">00</strong><span>Hours</span></div>
+      <div class="timebox"><strong id="minutes">00</strong><span>Minutes</span></div>
+      <div class="timebox"><strong id="seconds">00</strong><span>Seconds</span></div>
     </div>
+    <p class="script">The world became more beautiful on the day you were born. ✨</p>
+  </section>
 
-    <!-- Memories Gallery -->
-    <h2 class="section-title">Our Beautiful Memories 📸</h2>
+  <section id="memories">
+    <div class="section-heading">
+      <div class="eyebrow">Little moments, forever memories</div>
+      <h2>Our <span class="script">Memory Lane</span></h2>
+      <p>Har photo ek kahani hai, aur meri favourite kahani mein tum ho. ♡</p>
+    </div>
     <div class="gallery">
-      <div class="gallery-card">
-        <img src="photo1.jpg" alt="Memory 1">
-        <p>Cake Celebration Time 🎂 </p>
-      </div>
-      <div class="gallery-card">
-        <img src="photo2.Jpg" alt="Memory 2">
-        <p>Your Cute Smile 😍</p>
-      </div>
-      <div class="gallery-card">
-        <img src="photo3.Jpg" alt="Memory 3">
-        <p>special Dancing Moments ✨</p>
-      </div>
-      <div class="gallery-card">
-        <img src="photo4.Jpg" alt="Memory 4">
-        <p>Together Forever ❤️</p>
-      </div>
-      <div class="gallery-card">
-        <img src="photo5.Jpg" alt="Memory 5">
-        <p>Happy Birthday Riya✨</p>
-      </div>
-      <div class="gallery-card">
-        <img src="photo6.Jpg" alt="Memory 6">
-        <p>My Love ❤️ </p>
-      </div>
+      <figure class="gallery-card"><img src="photo1.jpg" alt="Our birthday memory" loading="lazy" onclick="openLightbox(this.src)"><figcaption>Little moments, big feelings 🎂</figcaption></figure>
+      <figure class="gallery-card"><img src="photo2.jpg" alt="Riya's lovely smile" loading="lazy" onclick="openLightbox(this.src)"><figcaption>Your smile, my favourite view ♡</figcaption></figure>
+      <figure class="gallery-card"><img src="photo3.jpg" alt="A special memory together" loading="lazy" onclick="openLightbox(this.src)"><figcaption>One for the memory book ✨</figcaption></figure>
+      <figure class="gallery-card"><img src="photo4.jpg" alt="A moment to remember" loading="lazy" onclick="openLightbox(this.src)"><figcaption>My favourite kind of happiness 💗</figcaption></figure>
+      <figure class="gallery-card"><img src="photo5.jpg" alt="Birthday celebration memory" loading="lazy" onclick="openLightbox(this.src)"><figcaption>Celebrating the girl I adore 🌹</figcaption></figure>
+      <figure class="gallery-card"><img src="photo6.jpg" alt="A memory close to my heart" loading="lazy" onclick="openLightbox(this.src)"><figcaption>My person. My Riya. ❤️</figcaption></figure>
     </div>
+  </section>
 
-    <!-- Love Letter -->
-    <h2 class="section-title">A Letter For You 💌</h2>
+  <section id="letter">
+    <div class="section-heading">
+      <div class="eyebrow">Open whenever you need a hug</div>
+      <h2>A letter for <span class="script">my jaan</span></h2>
+    </div>
     <div class="letter-card">
       <p><strong>Dearest Riya,</strong></p>
-      <p>Aap meri zindagi ka sabse khubsurat hissa ho. Tumhari muskaan se mera har din roshan ho jata hai. Tumhare saath bitaya har ek moment mere liye bohot khaas hai.</p>
-      <p>Is birthday par main bas yahi chahta hoon ki tum hamesha aise hi muskurati raho aur tumhari saari khwahishein puri hon. Happy Birthday my Love! ❤️✨</p>
+      <p>Happy Birthday, meri jaan. ❤️ Kaash aaj main tumhare paas hota, tumhara haath pakad kar tumhe wish karta, tumhari smile dekhta aur tumhe batata ki tum mere liye kitni special ho.</p>
+      <p>Long distance kabhi-kabhi mushkil hota hai, par tumse pyaar karna kabhi mushkil nahi. Dooriyan sirf jagahon ke beech hain, mere dil aur tumhare dil ke beech nahi. Tumhari khushi, tumhare dreams aur tumhari smile mere liye bahut matter karti hai.</p>
+      <p>Main perfect hone ka promise nahi karta, par tumhare liye har din better banne ki koshish zaroor karunga. Main chahta hoon ki tum hamesha loved, respected aur safe feel karo, aur tumhare har sapne mein tumhe mera support mile.</p>
+      <p>Aaj tumhara birthday hai, par gift mujhe mila tha us din jab tum meri life mein aayi. Thank you for being you, Riya. Ek din hum saath baith kar in long-distance memories ko yaad karenge, aur shayad in par hansenge bhi.</p>
+      <p>Happy Birthday, meri future wife. Tumhari hasi meri favourite sound hai, aur tum meri favourite person. Aaj, kal aur har naye din mein — I choose you. 💍</p>
+      <p class="signoff">Hamesha tumhara,<br>Pratik ♡</p>
     </div>
+  </section>
 
-    <!-- Surprise Section -->
-    <div class="surprise-section">
-      <button class="gift-btn" onclick="revealSurprise()">Tap For Special Surprise 🎁</button>
-      <div id="surprise-content">
-        <h3 style="color: #e63946; margin-bottom: 10px;">💖 Special Surprise Gift! 💖</h3>
-        <p>You have unlocked an unlimited pass for free hugs, warm kisses, and romantic dates for life! 🌹✨</p>
-      </div>
+  <section class="card center">
+    <div class="eyebrow">A few things I adore</div>
+    <h2>Why you're <span class="script">so special</span></h2>
+    <div class="reason-grid">
+      <div class="reason"><b>01 ♡</b><p>Tumhari smile, jo mera mood ek second mein better kar deti hai.</p></div>
+      <div class="reason"><b>02 ✧</b><p>Tumhara apna sa andaaz, jo ordinary days ko special bana deta hai.</p></div>
+      <div class="reason"><b>03 ∞</b><p>Yeh sukoon ki duniya mein kahin meri Riya hai — and she's my favourite.</p></div>
     </div>
+  </section>
 
-    <footer>
-      Made with ❤️ for Riya
-    </footer>
-  </div>
+  <section class="card center">
+    <div class="eyebrow">One last little surprise</div>
+    <h2>Ready, <span class="script">birthday girl?</span></h2>
+    <p>Ek button ke peeche meri dil ki ek aur baat chhupi hai. 💗</p>
+    <button class="btn" type="button" onclick="revealSurprise()">Open your surprise 🎁</button>
+    <div class="surprise-box" id="surprise-content">
+      <div style="font-size:36px">💌 💗 💍</div>
+      <h3>My favourite person, forever.</h3>
+      <p>Riya, agar main abhi tumhe hug kar sakta, toh shayad words ki zarurat hi nahi padti. 🥹❤️</p>
+      <p class="script">You are loved more than this little website could ever say. Happy Birthday, meri jaan!</p>
+      <p>Unlimited hugs, warm kisses, silly dates aur saari zindagi ki memories — someday, with you. ♡</p>
+    </div>
+  </section>
 
-  <script>
-    // Login Validation
-    function checkLogin() {
-      const u = document.getElementById('username').value.trim().toLowerCase();
-      const p = document.getElementById('password').value.trim().toLowerCase();
+  <footer>
+    <div style="font-size:30px;color:#ff9fc8">♡</div>
+    Made with all my love, by Pratik — only for Riya.<br>
+    <span class="tiny">Distance is temporary. The memories are ours. ✨</span>
+  </footer>
+ </div>
+</div>
 
-      // ID: riya | Password: 20october
-      if (u === "riya" && p === "20october") {
-        document.getElementById('login-screen').style.display = 'none';
-        document.getElementById('main-content').style.display = 'block';
-      } else {
-        document.getElementById('error-msg').style.display = 'block';
-      }
-    }
+<div id="hearts" aria-hidden="true"></div>
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo preview" onclick="closeLightbox()">
+  <button id="close-lightbox" aria-label="Close photo" onclick="closeLightbox()">×</button>
+  <img id="lightbox-image" alt="Expanded memory">
+</div>
 
-    // Birthday Countdown Logic
-    const birthdayDate = new Date("October 20, 2026 00:00:00").getTime();
+<script>
+/* LOGIN DETAILS — defaults from your existing website */
+const SECRET_ID = "riya";
+const SECRET_PASSWORD = "20october";
 
-    const timerInterval = setInterval(() => {
-      const now = new Date().getTime();
-      const diff = birthdayDate - now;
+document.getElementById("login-form").addEventListener("submit", function(event) {
+  event.preventDefault();
+  const enteredId = document.getElementById("username").value.trim().toLowerCase();
+  const enteredPassword = document.getElementById("password").value.trim().toLowerCase();
+  const error = document.getElementById("error-msg");
 
-      if (diff > 0) {
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+  if (enteredId === SECRET_ID && enteredPassword === SECRET_PASSWORD) {
+    document.getElementById("login-screen").style.display = "none";
+    document.getElementById("main-content").style.display = "block";
+    error.style.display = "none";
+    window.scrollTo({top: 0, behavior: "smooth"});
+    startHearts();
+  } else {
+    error.style.display = "block";
+  }
+});
 
-        document.getElementById("days").innerText = days < 10 ? "0" + days : days;
-        document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
-        document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
-        document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
-      } else {
-        clearInterval(timerInterval);
-        document.querySelector(".countdown-container").innerHTML = "<h3>🎉 Happy Birthday Riya! Wish You Endless Happiness! 🎉</h3>";
-      }
-    }, 1000);
+function updateCountdown() {
+  const now = new Date();
+  let target = new Date(now.getFullYear(), 9, 20, 0, 0, 0);
+  if (now >= target) target = new Date(now.getFullYear() + 1, 9, 20, 0, 0, 0);
+  const diff = target.getTime() - now.getTime();
+  const values = {
+    days: Math.floor(diff / 86400000),
+    hours: Math.floor((diff % 86400000) / 3600000),
+    minutes: Math.floor((diff % 3600000) / 60000),
+    seconds: Math.floor((diff % 60000) / 1000)
+  };
+  Object.entries(values).forEach(([id, value]) => {
+    document.getElementById(id).textContent = String(value).padStart(2, "0");
+  });
+  const note = document.getElementById("countdown-note");
+  if (now.getMonth() === 9 && now.getDate() === 20) {
+    note.textContent = "It's your birthday today, my love! Happy Birthday! ♡";
+  } else {
+    note.textContent = "Counting the moments until we celebrate you.";
+  }
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
 
-    // Reveal Surprise
-    function revealSurprise() {
-      const content = document.getElementById("surprise-content");
-      if (content.style.display === "block") {
-        content.style.display = "none";
-      } else {
-        content.style.display = "block";
-      }
-    }
-  </script>
+function revealSurprise() {
+  const box = document.getElementById("surprise-content");
+  box.style.display = box.style.display === "block" ? "none" : "block";
+  if (box.style.display === "block") {
+    box.scrollIntoView({behavior: "smooth", block: "center"});
+    for (let i = 0; i < 18; i++) setTimeout(makeHeart, i * 100);
+  }
+}
+function makeHeart() {
+  const layer = document.getElementById("hearts");
+  const heart = document.createElement("span");
+  heart.className = "float-heart";
+  heart.textContent = ["♡", "♥", "✧", "💗"][Math.floor(Math.random() * 4)];
+  heart.style.left = Math.random() * 100 + "%";
+  heart.style.fontSize = (14 + Math.random() * 23) + "px";
+  heart.style.animationDuration = (6 + Math.random() * 6) + "s";
+  layer.appendChild(heart);
+  setTimeout(() => heart.remove(), 13000);
+}
+function startHearts() {
+  for (let i = 0; i < 10; i++) setTimeout(makeHeart, i * 170);
+  setInterval(makeHeart, 1000);
+}
+function openLightbox(src) {
+  const lightbox = document.getElementById("lightbox");
+  document.getElementById("lightbox-image").src = src;
+  lightbox.style.display = "flex";
+}
+function closeLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+  document.getElementById("lightbox-image").src = "";
+}
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeLightbox();
+});
+</script>
 </body>
 </html>
